@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: bluedraft_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  strapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bluedraft_strapi
+    restart: always
+    ports:
+      - "1337:1337"
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_URL: postgres://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@postgres:5432/${DATABASE_NAME}
+      NODE_ENV: development
+    volumes:
+      - ./strapi:/srv/app
+      - /srv/app/node_modules
+
+volumes:
+  postgres_data:
