@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_our_clients",
+  "info": {
+    "displayName": "our_clients",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "companies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::company.company"
+    }
+  },
+  "config": {}
+}

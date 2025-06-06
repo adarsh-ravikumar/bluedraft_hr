@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_about_uses",
+  "info": {
+    "displayName": "about_us"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}
